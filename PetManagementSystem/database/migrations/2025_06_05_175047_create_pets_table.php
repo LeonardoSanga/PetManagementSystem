@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('species');
             $table->string('breed');
-            $table->date('birth_date');
             $table->string('image');
         });
     }

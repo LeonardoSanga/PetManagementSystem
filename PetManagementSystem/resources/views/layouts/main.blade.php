@@ -29,40 +29,51 @@
                     </a>
 
                     <ul class="navbar-nav">
+                        @auth
+                        @if(auth()->user()->user_type == 1)
+                        <li class="nav-item">
+                            <a href="/users" class="nav-link"><ion-icon name="people-outline"></ion-icon> Usuários</a>
+                        </li>
+                        @endif
+                        @endauth
+
                         <li class="nav-item">
                             <a href="/pets/create" class="nav-link"><ion-icon name="paw-outline"></ion-icon> Cadastrar Pet</a>
                         </li>
-                    </ul>
 
-                    <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="/" class="nav-link"><ion-icon name="create-outline"></ion-icon> Agendar Consulta</a>
+                            <a href="/appointment/create" class="nav-link"><ion-icon name="create-outline"></ion-icon> Agendar Consulta</a>
                         </li>
-                    </ul>
 
-                    <ul class="navbar-nav">
+                    @auth 
                         <li class="nav-item">
-                            <a href="/" class="nav-link"><ion-icon name="receipt-outline"></ion-icon> Meus Pets</a>
+                            <a href="/dashboard" class="nav-link"><ion-icon name="receipt-outline"></ion-icon> Meus Pets</a>
                         </li>
-                    </ul>
 
-                    <ul class="navbar-nav">
                         <li class="nav-item">
                             <a href="/" class="nav-link"><ion-icon name="calendar-outline"></ion-icon> Minhas Consultas</a>
                         </li>
-                    </ul>
 
-                    <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="/" class="nav-link"><ion-icon name="log-in-outline"></ion-icon> Entrar</a>
+                            <form action="/logout" method="POST">
+                                @csrf 
+                                <a href="/logout" class="nav-link" onclick="event.preventDefault(); this.closest('form').submit();"><ion-icon name="log-out-outline"></ion-icon> Sair</a>
+                            </form>
+                        </li>
+                        
+                    @endauth
+
+                    @guest
+                        <li class="nav-item">
+                            <a href="/login" class="nav-link"><ion-icon name="log-in-outline"></ion-icon> Entrar</a>
+                        </li>
+
+                    
+                        <li class="nav-item">
+                            <a href="/register" class="nav-link"><ion-icon name="person-add-outline"></ion-icon> Cadastrar</a>
                         </li>
                     </ul>
-
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="/" class="nav-link"><ion-icon name="person-add-outline"></ion-icon> Cadastrar</a>
-                        </li>
-                    </ul>
+                    @endguest
                 </div>
             </nav>
 

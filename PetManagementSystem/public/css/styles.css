@@ -51,6 +51,10 @@ header {
     
 }
 
+.navbar-nav {
+    flex-direction: column !important;
+}
+
 #navbar a {
     font-size: 17px;
     color: #757575;
@@ -78,6 +82,75 @@ header {
     font-size: 17px;
     color: #757575;
 }
+
+/* Pet page*/
+#image-container,
+#info-container {
+    margin-top: 30px;
+}
+
+#image-container img {
+    border-radius: 10px;
+}
+
+#info-container h1 {
+    font-size: 36px;
+    font-weight: 900;
+}
+
+#info-container p {
+    margin: 0;
+    font-size: 14px;
+    display: flex;
+}
+
+#info-container h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#info-container ion-icon {
+    font-size: 20px;
+    color: #F2A340;
+    margin-right: 5px;
+}
+
+#image-container img {
+    height: 260px;
+    width: 100%;
+}
+
+/*Event create page  */
+
+#pet-create-container {
+    padding: 30px;
+}
+
+#pet-create-container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#pet-create-container input,
+#pet-create-container select,
+#pet-create-container textarea {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+/* User Edit Page */
+
+.pet-dashboard-image {
+    width: 60px;
+}
+
+/* Pet Edit Page */
+
+.img-preview {
+    width: 100px;
+    margin-top: 20px;
+}
+
 
 /* full content */
 
