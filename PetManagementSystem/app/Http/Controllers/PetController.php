@@ -71,7 +71,7 @@ class PetController extends Controller
 
         Pet::findOrFail($id)->delete();
 
-        return redirect('/pets')->with('msg', 'Pet excluído com sucesso!');
+        return redirect('/dashboard')->with('msg', 'Pet excluído com sucesso!');
 
     }
 
@@ -88,7 +88,7 @@ class PetController extends Controller
 
         Pet::findOrFail($request->id)->update($date);
 
-        return redirect('/pets')->with('msg', 'Pet alterado com sucesso!');
+        return redirect('/dashboard')->with('msg', 'Pet alterado com sucesso!');
 
     }
 }
