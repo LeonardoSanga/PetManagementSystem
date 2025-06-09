@@ -51,7 +51,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/" class="nav-link"><ion-icon name="calendar-outline"></ion-icon> Minhas Consultas</a>
+                            <a href="/appointment/dashboard" class="nav-link"><ion-icon name="calendar-outline"></ion-icon> Minhas Consultas</a>
                         </li>
 
                         <li class="nav-item">

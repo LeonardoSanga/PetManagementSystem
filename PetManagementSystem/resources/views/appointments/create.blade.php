@@ -6,32 +6,32 @@
 
 <div id="pet-create-container" class="col-md-6 offset-md-3">
     <h1>Agende sua consulta</h1>
-    <form action="/pets" method="POST" enctype="multipart/form-data">
+    <form action="/appointment" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <label for="pets_name">Nome do Pet:</label>
-            <input type="text" class="form-control" id="pets_name" name="pets_name" placeholder="Nome do pet">
+            <label for="vets_name">Nome do Veterinário:</label>
+            <input type="text" class="form-control" id="vets_name" name="vets_name" placeholder="Nome do veterinário">
         </div>
 
         <div class="form-group">
-            <label for="species">Espécie:</label>
-            <input type="text" class="form-control" id="species" name="species" placeholder="Espécie do pet">
+            <label for="pet_id">Qual o Pet?</label>
+            <select name="pet_id" id="pet_id"  class="form-control">
+                @foreach($pets as $pet)
+                    <option value="{{ $pet->id }} ">{{ $pet->name }} | {{ $pet->species }} | {{ $pet->breed }} |  {{ date('d/m/Y', strtotime($pet->birth_date)) }}</option>
+                @endforeach
+            </select>
         </div>
 
         <div class="form-group">
-            <label for="breed">Raça:</label>
-            <input type="text" class="form-control" id="breed" name="breed" placeholder="Raça do pet">
+            <label for="date">Data da consulta:</label>
+            <input type="datetime-local" class="form-control" id="date" name="date">
         </div>
 
-        <div class="form-group">
-            <label for="birth_date">Data da consulta:</label>
-            <input type="date" class="form-control" id="birth_date" name="birth_date">
+         <div class="form-group">
+            <label for="description">Breve descrição do problema:</label>
+            <textarea name="description" id="description" class="form-control" placeholder="O que há com seu Pet?"></textarea>
         </div>
 
-        <div class="form-group">
-            <label for="image">Imagem do Pet:</label>
-            <input type="file" class="form-control-file" id="image" name="image">
-        </div>
 
         <input type="submit" class="btn btn-primary" value="Cadastrar pet">
     </form>

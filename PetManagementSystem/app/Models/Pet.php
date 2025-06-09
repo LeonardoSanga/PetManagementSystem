@@ -12,5 +12,9 @@ class Pet extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+    public function appointments() {
+        return $this->hasMany('App\Models\Appointment');
+    }
+
     protected $guarded = [];
 }

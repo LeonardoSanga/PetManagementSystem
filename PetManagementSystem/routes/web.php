@@ -25,6 +25,16 @@ Route::put('/pets/update/{id}', [PetController::class, 'update'])->middleware('a
 
 Route::get('/appointment/create', [AppointmentController::class, 'create'])->middleware('auth');
 
+Route::post('/appointment', [AppointmentController::class, 'store']);
+
+ROute::get('/appointment/dashboard', [AppointmentController::class, 'dashboard']);
+
+Route::delete('/appointment/{id}', [AppointmentController::class, 'destroy'])->middleware('auth');
+
+Route::get('/appointment/edit/{id}', [AppointmentController::class, 'edit'])->middleware('auth');
+
+Route::put('/appointment/update/{id}', [AppointmentController::class, 'update'])->middleware('auth');
+
 /* User */
 
 Route::get('/users', [UserController::class, 'dashboard']);
