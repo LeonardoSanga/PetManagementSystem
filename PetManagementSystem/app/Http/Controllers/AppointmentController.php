@@ -34,11 +34,25 @@ class AppointmentController extends Controller
 
     public function dashboard() {
         $user_id = auth()->user()->id;
+        $search = request('search');
 
-        if(auth()->user()->user_type == 1) {
+        if((auth()->user()->user_type == 1) && !$search) {
+
             $appointments = Appointment::all();
-        } else {
+
+        } else if((auth()->user()->user_type == 1) && $search) {
+
+            $appointments = Appointment::whereDate('appointment_date', $search)->get();
+
+        }
+        else if((auth()->user()->user_type == 0) && !$search) { 
+
             $appointments = Appointment::where('user_id', $user_id)->get();
+
+        } else {
+            $appointments = Appointment::where('user_id', $user_id)
+                           ->whereDate('appointment_date', $search)
+                           ->get();
         }
 
         return view('appointments.dashboard', ['appointments' => $appointments]);

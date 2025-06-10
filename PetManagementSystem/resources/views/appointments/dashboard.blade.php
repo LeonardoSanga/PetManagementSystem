@@ -5,6 +5,12 @@
 @section('content')
 
     <div class="col-md-10 offset-md-1">
+        <h1>Busque uma consulta</h1>
+        <form action="/appointment/dashboard" method="GET">
+            <input type="date" id="search" name="search" class="form-control" placeholder="Procure um Pet">
+            <input type="submit" value="Buscar">
+        </form>
+
         <div class="row">
             @if(count($appointments) > 0)
             <table>

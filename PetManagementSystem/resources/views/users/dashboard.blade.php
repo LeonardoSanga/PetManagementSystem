@@ -5,6 +5,12 @@
 @section('content')
 
     <div class="col-md-10 offset-md-1">
+        <h1>Busque um usuário</h1>
+        <form action="/users" method="GET">
+            <input type="text" id="search" name="search" class="form-control" placeholder="Procure um usuário">
+            <input type="submit" value="Buscar">
+        </form>
+
         <div class="row">
             <table>
             @foreach($users as $user)

@@ -56,11 +56,26 @@ class PetController extends Controller
     public function dashboard() {
 
         $user_id = auth()->user()->id;
+        $search = request('search');
         
-        if(auth()->user()->user_type == 1) {
+        if((auth()->user()->user_type == 1) && !$search) {
+
             $pets = Pet::all();
-        } else {
+
+        } else if((auth()->user()->user_type == 1) && $search) {
+
+            $pets = Pet::where([
+                ['name', 'like', '%'.$search.'%']
+            ])->get();
+
+        } else if((auth()->user()->user_type == 0) && !$search) {
+
             $pets = Pet::where('user_id', $user_id)->get();
+
+        } else {
+            
+            $pets = Pet::where('user_id', $user_id)->where('name', 'like', '%' . $search . '%')->get();
+
         }
 
         return view('pets.dashboard', ['pets' => $pets]);

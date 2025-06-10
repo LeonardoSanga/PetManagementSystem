@@ -10,7 +10,20 @@ use App\Models\User;
 class UserController extends Controller
 {
     public function dashboard() {
-        $users = User::all();
+
+        $search = request('search');
+
+        if($search) {
+
+            $users = User::where([
+                ['name', 'like', '%'.$search.'%']
+            ])->get();
+
+        } else {
+
+            $users = User::all();
+
+        }
 
         return view('users.dashboard', ['users' => $users]);
     }
