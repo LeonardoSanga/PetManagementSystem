@@ -27,7 +27,7 @@
                     
                     </td>
                     <td>{{ $appointment->vets_name }}</td>
-                    <td>{{ date('d/m/Y', strtotime($appointment->appointment_date)) }}</td>
+                    <td>{{ date('d/m/Y  H:i', strtotime($appointment->appointment_date)) }}</td>
                     <!-- <td><img src="/img/pets/" class="pet-dashboard-image" alt=""></td> -->
                 </tr>
             @endforeach
