@@ -166,3 +166,99 @@ header {
 }
 
 
+/*------------------------------------*\
+    LAYOUT COM SIDEBAR
+\*------------------------------------*/
+
+/* Garante que o body e o html ocupem 100% da altura */
+html, body {
+    height: 100%;
+}
+
+/* Wrapper principal que organiza a página em duas colunas */
+.page-wrapper {
+    display: flex; /* Ativa o layout flexbox */
+    min-height: 100vh; /* Ocupa no mínimo 100% da altura da tela */
+}
+
+/* Estilização da Barra Lateral (Sidebar) */
+.sidebar {
+    width: 250px; /* Largura fixa da sidebar */
+    flex-shrink: 0; /* Impede que a sidebar encolha */
+    background-color: #f8f9fa; /* <<<<<<< COR MAIS ESCURA QUE O BRANCO */
+    border-right: 1px solid #dee2e6; /* Borda sutil para separar */
+    padding: 15px;
+}
+
+/* Estilização do Conteúdo Principal */
+.main-content {
+    flex-grow: 1; /* Faz o conteúdo principal ocupar todo o espaço restante */
+    padding: 30px; /* Espaçamento interno */
+    background-color: #ffffff; /* Fundo branco para o conteúdo */
+}
+
+/* Estilo específico para o botão de Sair */
+.sidebar .nav-link-logout {
+    color: #dc3545 !important; /* Um tom de vermelho padrão (Bootstrap Danger) */
+}
+
+/* Efeito hover para o botão de Sair */
+.sidebar .nav-link-logout:hover {
+    color: #fff; /* Texto branco ao passar o mouse */
+    background-color: #c82333; /* Fundo vermelho mais escuro */
+}
+
+
+/*------------------------------------*\
+    AJUSTES NA SIDEBAR
+\*------------------------------------*/
+
+/* Logo da Sidebar */
+.sidebar-logo {
+    width: 60px; /* Tamanho do logo */
+    height: 60px;
+    border-radius: 50%; /* Deixa o logo redondo */
+    object-fit: cover;
+    margin-bottom: 10px;
+    
+}
+
+/* Adicione este código ao seu arquivo styles.css */
+.sidebar .navbar-brand {
+    display: flex;          /* Ativa o modo flexbox */
+    flex-direction: column; /* Empilha os itens verticalmente (a imagem e o nome) */
+    align-items: center;    /* Centraliza os itens horizontalmente */
+    width: 100%;            /* Garante que o container ocupe toda a largura */
+}
+
+#navbar-return {
+    font-weight: bold;
+    font-size: 1.5rem;
+    display: block; /* Garante que o nome fique abaixo da imagem */
+}
+
+/* Itens de navegação */
+.sidebar .nav-link {
+    color: #333; /* Cor mais escura para os links */
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 5px; /* Espaço entre os itens */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o ícone e o texto */
+}
+
+/* Efeito hover para os links */
+.sidebar .nav-link:hover {
+    background-color: #e9ecef; /* Fundo sutil ao passar o mouse */
+    color: #000;
+}
+
+/* Mensagem de sucesso */
+.msg {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
