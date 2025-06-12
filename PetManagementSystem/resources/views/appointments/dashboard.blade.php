@@ -7,10 +7,12 @@
 <div class="col-md-10 offset-md-1 dashboard-container">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Minhas Consultas</h1>
+        @if(auth()->user()->user_type == 1)
         <a href="/appointment/create" class="btn btn-success">
             <ion-icon name="add-outline"></ion-icon>
             Cadastrar Nova Consulta
         </a>
+        @endif
     </div>
 
     <div class="my-4">
