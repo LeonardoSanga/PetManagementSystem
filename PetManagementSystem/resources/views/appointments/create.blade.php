@@ -37,9 +37,8 @@
             </div>
 
             <div class="mb-3">
-                {{-- ATENÇÃO: Renomeei o 'name' para 'appointment_date' para consistência --}}
-                <label for="appointment_date" class="form-label">Data e Hora da Consulta:</label>
-                <input type="datetime-local" class="form-control" id="appointment_date" name="appointment_date" required>
+                <label for="date" class="form-label">Data e Hora da Consulta:</label>
+                <input type="datetime-local" class="form-control" id="date" name="date" required>
             </div>
 
             <div class="mb-3">
