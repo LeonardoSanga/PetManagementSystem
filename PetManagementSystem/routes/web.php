@@ -48,3 +48,5 @@ Route::delete('/users/{id}', [UserController::class, 'destroy'])->middleware('au
 Route::get('/users/edit/{id}', [UserController::class, 'edit'])->middleware('auth');
 
 Route::put('users/update/{id}', [UserController::class, 'update'])->middleware('auth');
+
+Route::get('/', [WelcomeController::class, 'index'])->middleware('auth');

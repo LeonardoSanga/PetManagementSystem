@@ -11,24 +11,27 @@ use Illuminate\Support\Facades\Auth;
 
 class WelcomeController extends Controller
 {
-    public function index()
+   public function index()
     {
-        // 1. Primeiro, pegamos o usuário que está logado no sistema.
-        $user = Auth::user();
+        // Verifica primeiro se o usuário está logado
+        if (!Auth::check()) {
+            // Se não estiver, redireciona para a página de login
+            return redirect('/login');
+        }
 
-        // 2. Usamos o ID dele para buscar APENAS os pets que pertencem a ele.
+        // Se o código chegou até aqui, significa que o usuário está logado.
+        // O resto do seu código pode continuar como antes.
+        $user = Auth::user();
         $pets = Pet::where('user_id', $user->id)->get();
 
-        
         $appointments = Appointment::whereIn('pet_id', $pets->pluck('id'))
-            ->where('appointment_date', '>=', now())
-            ->orderBy('appointment_date', 'asc')
-            ->get();
+                                     ->where('appointment_date', '>=', now())
+                                     ->orderBy('appointment_date', 'asc')
+                                     ->get();
 
-        
         return view('welcome', [
             'pets'         => $pets,
-            'appointments' => $appointments // << A variável que faltava agora está sendo enviada!
+            'appointments' => $appointments
         ]);
     }
 }

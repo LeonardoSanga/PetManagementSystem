@@ -44,5 +44,17 @@
                 </x-button>
             </div>
         </form>
+
+        {{-- INÍCIO DA SEÇÃO ADICIONADA --}}
+        <div class="text-center mt-6">
+            <p class="text-sm text-gray-600">
+                {{ __("Don't have an account?") }}
+                <a class="underline text-sm text-indigo-600 hover:text-indigo-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
+                    {{ __('Sign up') }}
+                </a>
+            </p>
+        </div>
+        {{-- FIM DA SEÇÃO ADICIONADA --}}
+
     </x-authentication-card>
 </x-guest-layout>

@@ -74,7 +74,6 @@
         {{-- MENSAGEM PARA QUANDO NÃO HÁ CONSULTAS --}}
         <div class="list-group-item text-center text-muted p-4">
             <p class="mb-1"><i class="far fa-calendar-check me-2"></i>Nenhuma consulta agendada no momento.</p>
-            <a href="/appointment/create" class="btn btn-sm btn-success mt-2">Agendar uma consulta</a>
         </div>
         @endforelse
     </div>

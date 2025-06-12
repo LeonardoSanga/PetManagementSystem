@@ -68,7 +68,7 @@
         @if($search ?? false)
             <p>Nenhum pet encontrado com o nome "{{ $search }}". <a href="/dashboard">Ver todos.</a></p>
         @else
-            <p>Você ainda não tem nenhum pet cadastrado no sistema. <a href="/pets/create">Cadastrar novo PET.</a></p>
+            
         @endif
     @endif
 </div>
