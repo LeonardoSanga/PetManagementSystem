@@ -22,7 +22,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('appointments', function (Blueprint $table) {
-            $table->foreignId('pet_id')->constrained()->onDelete('cascade');
+            $table->dropForeign(['pet_id']); // Remove a foreign key
+            $table->dropColumn('pet_id');
         });
     }
 };

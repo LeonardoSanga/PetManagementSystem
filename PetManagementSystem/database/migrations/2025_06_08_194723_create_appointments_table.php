@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->dateTime('appointment_date');
             $table->string('vets_name');
-            $table->text("description");
+            $table->text("description")->nullable();;
         });
     }
 
