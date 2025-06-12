@@ -58,7 +58,7 @@
             </table>
         </div>
     @else
-        @if($search)
+        @if($search ?? false)
             <p>Nenhuma consulta encontrada para a data informada. <a href="/appointment/dashboard">Ver todas.</a></p>
         @else
             <p>Você ainda não tem nenhuma consulta agendada! <a href="/appointment/create">Agendar nova consulta.</a></p>
