@@ -38,9 +38,9 @@
             </div>
 
             <div class="mb-3">
-                <label for="date" class="form-label">Data e Hora da Consulta:</label>
+                <label for="appointment_date" class="form-label">Data e Hora da Consulta:</label>
                 {{-- Formata a data para o padrão do input datetime-local --}}
-                <input type="datetime-local" class="form-control" id="date" name="date" value="{{ \Carbon\Carbon::parse($appointment->date)->format('Y-m-d\TH:i') }}" required>
+                <input type="datetime-local" class="form-control" id="appointment_date" name="appointment_date" value="{{ \Carbon\Carbon::parse($appointment->date)->format('Y-m-d\TH:i') }}" required>
             </div>
 
             <div class="mb-3">
