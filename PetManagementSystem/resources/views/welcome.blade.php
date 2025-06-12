@@ -11,7 +11,7 @@
             <h1 class="h2">Olá, {{ auth()->user()->name }}!</h1>
             <p class="text-muted">Bem-vindo(a) ao seu painel de gestão.</p>
         </div>
-        
+
     </div>
 
     <hr>
@@ -59,17 +59,32 @@
     </div>
 
     <div class="list-group">
-        {{-- Aqui usamos a variável $appointments enviada pelo controller --}}
         @forelse ($appointments as $appointment)
-            <a href="/appointment/edit/{{ $appointment->id }}" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    {{-- Para isso funcionar, seu Model Appointment precisa da relação com Pet --}}
-                    <h5 class="mb-1">Consulta para: {{ $appointment->pet->name }}</h5>
-                    <small class="text-success fw-bold">{{ \Carbon\Carbon::parse($appointment->appointment_date)->format('d/m/Y \à\s H:i') }}</small>
-                </div>
-                <p class="mb-1">Veterinário(a): {{ $appointment->vets_name }}</p>
-                <small class="text-muted">Descrição: {{ Str::limit($appointment->description, 100) }}</small>
-            </a>
+
+        {{-- INÍCIO DA LÓGICA DE PERMISSÃO --}}
+        @if(auth()->user()->user_type == 1)
+        {{-- CASO 1: O usuário é um Administrador (mostra o link clicável) --}}
+        <a href="/appointment/edit/{{ $appointment->id }}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Consulta para: {{ $appointment->pet->name }}</h5>
+                <small class="text-success fw-bold">{{ \Carbon\Carbon::parse($appointment->appointment_date)->format('d/m/Y \à\s H:i') }}</small>
+            </div>
+            <p class="mb-1">Veterinário(a): {{ $appointment->vets_name }}</p>
+            <small class="text-muted">Descrição: {{ Str::limit($appointment->description, 100) }}</small>
+        </a>
+        @else
+        {{-- CASO 2: O usuário é Comum (mostra as informações, mas não é clicável) --}}
+        <div class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Consulta para: {{ $appointment->pet->name }}</h5>
+                <small class="text-success fw-bold">{{ \Carbon\Carbon::parse($appointment->appointment_date)->format('d/m/Y \à\s H:i') }}</small>
+            </div>
+            <p class="mb-1">Veterinário(a): {{ $appointment->vets_name }}</p>
+            <small class="text-muted">Descrição: {{ Str::limit($appointment->description, 100) }}</small>
+        </div>
+        @endif
+        {{-- FIM DA LÓGICA DE PERMISSÃO --}}
+
         @empty
         {{-- MENSAGEM PARA QUANDO NÃO HÁ CONSULTAS --}}
         <div class="list-group-item text-center text-muted p-4">
@@ -77,16 +92,15 @@
         </div>
         @endforelse
     </div>
-
 </div>
 
 {{-- Estilo para as imagens dos pets nos cards --}}
 <style>
-.card-img-top {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
+    .card-img-top {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
 </style>
 
 @endsection

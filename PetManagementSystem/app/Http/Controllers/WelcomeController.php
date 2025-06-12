@@ -3,32 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
 use App\Models\Pet;
 use App\Models\Appointment;
 use Illuminate\Support\Facades\Auth;
 
 class WelcomeController extends Controller
 {
-   public function index()
+    public function index()
     {
-        // Verifica primeiro se o usuário está logado
+        // Verifica se o usuário está logado. Se não, redireciona.
         if (!Auth::check()) {
-            // Se não estiver, redireciona para a página de login
             return redirect('/login');
         }
 
-        // Se o código chegou até aqui, significa que o usuário está logado.
-        // O resto do seu código pode continuar como antes.
+        // Se chegou aqui, o usuário está logado.
         $user = Auth::user();
+
+        // 1. Busca os pets do usuário logado (esta parte continua igual e está correta).
         $pets = Pet::where('user_id', $user->id)->get();
 
-        $appointments = Appointment::whereIn('pet_id', $pets->pluck('id'))
-                                     ->where('appointment_date', '>=', now())
-                                     ->orderBy('appointment_date', 'asc')
+        // 2. CORREÇÃO COM BASE NA SUA TABELA:
+        // Buscamos as consultas onde a coluna 'cliente_id' é igual ao ID do usuário logado.
+        $appointments = Appointment::where('cliente_id', $user->id)
+                                     ->where('appointment_date', '>=', now()) // Continua pegando só as futuras
+                                     ->orderBy('appointment_date', 'asc')    // E ordenando
                                      ->get();
 
+        // 3. Envia as duas coleções (pets e appointments) para a view.
         return view('welcome', [
             'pets'         => $pets,
             'appointments' => $appointments

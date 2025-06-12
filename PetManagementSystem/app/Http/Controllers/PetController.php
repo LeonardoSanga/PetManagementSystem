@@ -10,11 +10,13 @@ use App\Models\Pet;
 class PetController extends Controller
 {
 
-    public function create() {
+    public function create()
+    {
         return view('pets.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         $pet = new Pet;
 
@@ -25,7 +27,7 @@ class PetController extends Controller
         $pet->image = $request->image;
 
         /* Image Upload */
-        if($request->hasFile('image') && $request->file('image')->isValid()) {
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $requestImage = $request->image;
 
             $extension = $requestImage->extension();
@@ -35,7 +37,6 @@ class PetController extends Controller
             $requestImage->move(public_path('img/pets'), $imageName);
 
             $pet->image = $imageName;
-             
         }
 
         $user = auth()->user();
@@ -44,53 +45,54 @@ class PetController extends Controller
         $pet->save();
 
         return redirect('/dashboard')->with('msg', 'Pet cadastrado com sucesso!');
-
     }
 
-    public function dashboard() {
+    public function dashboard()
+    {
 
         $user_id = auth()->user()->id;
         $search = request('search');
-        
-        if((auth()->user()->user_type == 1) && !$search) {
+
+        if ((auth()->user()->user_type == 1) && !$search) {
 
             $pets = Pet::all();
-
-        } else if((auth()->user()->user_type == 1) && $search) {
+        } else if ((auth()->user()->user_type == 1) && $search) {
 
             $pets = Pet::where([
-                ['name', 'like', '%'.$search.'%']
+                ['name', 'like', '%' . $search . '%']
             ])->get();
-
-        } else if((auth()->user()->user_type == 0) && !$search) {
+        } else if ((auth()->user()->user_type == 0) && !$search) {
 
             $pets = Pet::where('user_id', $user_id)->get();
-
         } else {
-            
-            $pets = Pet::where('user_id', $user_id)->where('name', 'like', '%' . $search . '%')->get();
 
+            $pets = Pet::where('user_id', $user_id)->where('name', 'like', '%' . $search . '%')->get();
         }
 
         return view('pets.dashboard', ['pets' => $pets]);
-
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
+        // Apenas busca o pet pelo ID, sem verificar o dono.
+        $pet = Pet::findOrFail($id);
 
-        Pet::findOrFail($id)->delete();
-
-        return redirect('/dashboard')->with('msg', 'Pet excluído com sucesso!');
-
+        try {
+            $pet->delete();
+            return redirect('/dashboard')->with('msg', 'Pet excluído com sucesso!');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->with('error', 'Este pet não pode ser excluído, pois possui consultas associadas.');
+        }
     }
-
-    public function edit($id) {
+    public function edit($id)
+    {
         $pet = Pet::findOrFail($id);
 
         return view('pets.edit', ['pet' => $pet]);
     }
 
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
 
 
         $date = $request->all();
@@ -98,6 +100,5 @@ class PetController extends Controller
         Pet::findOrFail($request->id)->update($date);
 
         return redirect('/dashboard')->with('msg', 'Pet alterado com sucesso!');
-
     }
 }

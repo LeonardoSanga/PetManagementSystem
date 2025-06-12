@@ -7,13 +7,15 @@ use Illuminate\Http\Request;
 
 use App\Models\Appointment;
 use App\Models\Pet;
+use App\Models\User;
 
 class AppointmentController extends Controller
 {
     public function create() {
         $pets = Pet::all();
+        $users = User::all();
 
-        return view('appointments.create', ['pets' => $pets]);
+        return view('appointments.create', ['pets' => $pets, 'users' => $users]);
     }
 
     public function store(Request $request) {
@@ -23,6 +25,7 @@ class AppointmentController extends Controller
         $appointment->vets_name = $request->vets_name;
         $appointment->description = $request->description;
         $appointment->pet_id = $request->pet_id;
+        $appointment->cliente_id = $request->cliente_id;
 
         $user = auth()->user();
         $appointment->user_id = $user->id;
@@ -47,10 +50,10 @@ class AppointmentController extends Controller
         }
         else if((auth()->user()->user_type == 0) && !$search) { 
 
-            $appointments = Appointment::where('user_id', $user_id)->get();
+            $appointments = Appointment::where('cliente_id', $user_id)->get();
 
         } else {
-            $appointments = Appointment::where('user_id', $user_id)
+            $appointments = Appointment::where('cliente_id', $user_id)
                            ->whereDate('appointment_date', $search)
                            ->get();
         }
