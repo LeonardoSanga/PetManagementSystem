@@ -262,3 +262,43 @@ html, body {
     text-align: center;
     font-weight: bold;
 }
+
+
+/* Editar */
+
+.img-preview {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Cadastro */
+
+.file-upload-wrapper {
+    position: relative;
+    border: 2px dashed #ccc;
+    border-radius: .5rem;
+    padding: 2rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.file-upload-wrapper:hover {
+    background-color: #f8f9fa;
+    border-color: #0d6efd;
+}
+
+.file-upload-wrapper input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}

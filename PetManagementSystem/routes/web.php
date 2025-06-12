@@ -2,12 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PetController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\UserController;
 
+/* Welcome */
+
+Route::get('/', [WelcomeController::class, 'index']);
+
 /* Pet */
 
-Route::get('/', [PetController::class, 'index']);
 
 Route::get('/pets/create', [PetController::class, 'create'])->middleware('auth');
 

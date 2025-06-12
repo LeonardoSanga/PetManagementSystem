@@ -9,12 +9,6 @@ use App\Models\Pet;
 
 class PetController extends Controller
 {
-    public function index() {
-
-        $pets = Pet::all();
-
-        return view('welcome', ['pets' => $pets]);
-    }
 
     public function create() {
         return view('pets.create');
@@ -49,7 +43,7 @@ class PetController extends Controller
 
         $pet->save();
 
-        return redirect('/')->with('msg', 'Pet cadastrado com sucesso!');
+        return redirect('/dashboard')->with('msg', 'Pet cadastrado com sucesso!');
 
     }
 
