@@ -36,7 +36,7 @@
 
             <div class="mb-4">
                 <label for="birth_date" class="form-label">Data de nascimento:</label>
-                <input type="date" class="form-control" id="birth_date" name="birth_date" required>
+                <input type="date" class="form-control" id="birth_date" name="birth_date">
             </div>
 
             <div class="mb-4">
@@ -44,7 +44,7 @@
                 <div class="file-upload-wrapper text-center">
                     <i class="fas fa-cloud-upload-alt fa-3x text-muted"></i>
                     <p class="mt-2">Clique aqui para selecionar uma imagem</p>
-                    <input type="file" class="form-control-file" id="image" name="image" required>
+                    <input type="file" class="form-control-file" id="image" name="image">
                 </div>
             </div>
 
