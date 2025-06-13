@@ -23,8 +23,8 @@ class WelcomeController extends Controller
         $pets = Pet::where('user_id', $user->id)->get();
 
         // 2. CORREÇÃO COM BASE NA SUA TABELA:
-        // Buscamos as consultas onde a coluna 'cliente_id' é igual ao ID do usuário logado.
-        $appointments = Appointment::where('cliente_id', $user->id)
+        // Buscamos as consultas onde a coluna 'client_id' é igual ao ID do usuário logado.
+        $appointments = Appointment::where('client_id', $user->id)
                                      ->where('appointment_date', '>=', now()) // Continua pegando só as futuras
                                      ->orderBy('appointment_date', 'asc')    // E ordenando
                                      ->get();

@@ -25,8 +25,8 @@
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label for="cliente_id" class="form-label">Para qual Cliente?</label>
-                    <select name="cliente_id" id="cliente_id" class="form-select" required>
+                    <label for="client_id" class="form-label">Para qual Cliente?</label>
+                    <select name="client_id" id="client_id" class="form-select" required>
                         <option value=""  selected>Selecione um cliente...</option>
                         @foreach($users as $user)
                             <option value="{{ $user->id }}">{{ $user->name }}</option>

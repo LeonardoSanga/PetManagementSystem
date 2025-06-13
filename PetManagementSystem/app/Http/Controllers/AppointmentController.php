@@ -25,7 +25,7 @@ class AppointmentController extends Controller
         $appointment->vets_name = $request->vets_name;
         $appointment->description = $request->description;
         $appointment->pet_id = $request->pet_id;
-        $appointment->cliente_id = $request->cliente_id;
+        $appointment->client_id = $request->client_id;
 
         $user = auth()->user();
         $appointment->user_id = $user->id;
@@ -48,12 +48,12 @@ class AppointmentController extends Controller
             $appointments = Appointment::whereDate('appointment_date', $search)->get();
 
         }
-        else if((auth()->user()->user_type == 0) && !$search) { 
+        else if((auth()->user()->user_type == 0) && !$search  ) { 
 
-            $appointments = Appointment::where('cliente_id', $user_id)->get();
+            $appointments = Appointment::where('client_id', $user_id)->get();
 
         } else {
-            $appointments = Appointment::where('cliente_id', $user_id)
+            $appointments = Appointment::where('client_id', $user_id)
                            ->whereDate('appointment_date', $search)
                            ->get();
         }
