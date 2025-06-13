@@ -93,11 +93,25 @@ class PetController extends Controller
 
     public function update(Request $request)
     {
+ 
+        
+
+        $data = $request->all();
+
+        if($request->hasFile('image') && $request->file('image')->isValid()) {
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+
+            $requestImage->move(public_path('img/pets'), $imageName);
+
+            $data['image'] = $imageName;
+        }
 
 
-        $date = $request->all();
-
-        Pet::findOrFail($request->id)->update($date);
+        Pet::findOrFail($request->id)->update($data);
 
         return redirect('/dashboard')->with('msg', 'Pet alterado com sucesso!');
     }
