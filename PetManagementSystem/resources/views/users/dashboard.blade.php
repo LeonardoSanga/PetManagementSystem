@@ -11,7 +11,7 @@
         <h4>Busque um usuário</h4>
         <form action="/users" method="GET">
             <div class="input-group">
-                <input type="text" id="search" name="search" class="form-control" placeholder="Procure por nome ou e-mail...">
+                <input type="text" id="search" name="search" class="form-control" placeholder="Procure por nome...">
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="submit">Buscar</button>
                 </div>
@@ -67,7 +67,7 @@
             </table>
         </div>
     @else
-        @if($search)
+        @if($search ?? false)
             <p>Nenhum usuário encontrado com o termo "{{ $search }}". <a href="/users">Ver todos.</a></p>
         @else
             <p>Não há usuários cadastrados no sistema.</p>
