@@ -5,6 +5,32 @@ A aplicação web desenvolvida tem como propósito facilitar e modernizar o gere
 ## Tecnologias Utilizadas no Desenvolvimento da Aplicação
 A aplicação web foi desenvolvida utilizando o Laravel, um dos frameworks PHP mais populares e robustos da atualidade. Para a autenticação, foi utilizado o Laravel Jetstream, um pacote oficial que oferece funcionalidades prontas. A aplicação está integrada a um banco de dados MySQL, responsável por armazenar de forma estruturada todas as informações da clínica, como dados dos PETs, agendamentos e usuários. O Laravel facilita essa integração através do Eloquent ORM, que permite uma interação eficiente e intuitiva com o banco de dados.
 
+## Instruções para Rodar a Aplicação
+### 1. Clonar o projeto
+git clone https://github.com/usuario/repositorio.git](https://github.com/LeonardoSanga/PetManagementSystem.git<br>
+cd .\PetManagementSystem\PetManagementSystem\   
+### 2. Instalar as dependências com o Composer
+composer install
+### 3. Criar o arquivo .env
+cp .env.example .env
+### 4. Gerar a chave da aplicação
+php artisan key:generate
+### 5. Configurar o banco de dados no .env
+Edite o .env com suas credenciais de banco de dados (altere abaixo se necessário)<br><br>
+DB_CONNECTION=mysql<br>
+DB_HOST=127.0.0.1<br>
+DB_PORT=3306<br>
+DB_DATABASE=sancet<br>
+DB_USERNAME=root<br>
+DB_PASSWORD=
+### 6. Criar o banco de dados
+Crie o banco de dados (nome: sancet) no seu SGBD MySQL. Pode fazer isso via terminal phpMyAdmin.
+### 7. Rodar as migrações
+php artisan migrate
+### 8. Rodar o servidor
+php artisan serve
+
+
 ## Aplicação em funcionamento
 
 ### Tela Inicial
