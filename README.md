@@ -27,7 +27,10 @@ DB_PASSWORD=
 Crie o banco de dados (nome: sancet) no seu SGBD MySQL. Pode fazer isso via terminal phpMyAdmin.
 ### 7. Rodar as migrações
 php artisan migrate
-### 8. Rodar o servidor
+### 8. Rodar
+npm install<br>
+npm run dev
+### 9. Rodar o servidor
 php artisan serve
 
 
