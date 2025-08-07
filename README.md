@@ -7,7 +7,7 @@ A aplicação web foi desenvolvida utilizando o Laravel, um dos frameworks PHP m
 
 ## Instruções para Rodar a Aplicação
 ### 1. Clonar o projeto
-git clone https://github.com/usuario/repositorio.git](https://github.com/LeonardoSanga/PetManagementSystem.git<br>
+git clone https://github.com/LeonardoSanga/PetManagementSystem.git<br>
 cd .\PetManagementSystem\PetManagementSystem\   
 ### 2. Instalar as dependências com o Composer
 composer install
