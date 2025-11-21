@@ -5,6 +5,10 @@ A aplicação web desenvolvida tem como propósito facilitar e modernizar o gere
 ## Tecnologias Utilizadas no Desenvolvimento da Aplicação
 A aplicação web foi desenvolvida utilizando o Laravel, um dos frameworks PHP mais populares e robustos da atualidade. Para a autenticação, foi utilizado o Laravel Jetstream, um pacote oficial que oferece funcionalidades prontas. A aplicação está integrada a um banco de dados MySQL, responsável por armazenar de forma estruturada todas as informações da clínica, como dados dos PETs, agendamentos e usuários. O Laravel facilita essa integração através do Eloquent ORM, que permite uma interação eficiente e intuitiva com o banco de dados.
 
+## Relatório de Vulnerabilidades
+Na disciplina de Segurança da Informação, desenvolvemos um relatório expondo algumas vulnerabilidades que encontramos no nosso sistema:
+https://github.com/LeonardoSanga/PetManagementSystem/blob/master/PetManagementSystem/pentest_reports/vulnerability_report.pdf
+
 ## Instruções para Rodar a Aplicação
 ### 1. Clonar o projeto
 git clone https://github.com/LeonardoSanga/PetManagementSystem.git<br>
